@@ -1,0 +1,17 @@
+version: '3'
+
+networks:
+  reverseproxy:
+    external: true
+
+services:
+  proxy:
+    image: jwilder/nginx-proxy
+    restart: always
+    ports:
+      - "80:80"
+
+  whoami:
+    image: jwilder/whoami
+    environment:
+      - VIRTUAL_HOST=whoami.local
